@@ -5,9 +5,9 @@ By Running the project you are generating with openai conversations on a daily b
 
 **You can look up for the output in the file named "results"**
 
-Unternehmenssoftware Projekt 
+"Unternehmenssoftware" Project 
 -
-- aus dem Modul Unternehmenssoftware  Prof. Dr. Axel Hochstein
+- of the module "Unternehmenssoftware" by Prof. Dr. Axel Hochstein
 - Thema 1: Simulation of social platform with generative agents
 
 
@@ -21,6 +21,55 @@ How to Run the project:
 5.  configure path of line 9 from main.py so conversations getting stored in project
 6.  configure also the path in chromdb.py
 7.  you might need to read the documentary of chromadb, too.
+
+
+# Commands for Windows
+```bash
+  python --version
+```
+- falls nicht vorhanden:
+```bash
+  winget install Python.Python.3.12
+```
+
+- danach muss eine virtuelle Umgebung erstellt werden um Kollisionen in Python zu vermeiden, falls bereits python installiert ist
+```bash
+    py -m venv .venv
+````
+```bash
+  .\.venv\Scripts\Activate.ps1
+```    
+
+- jetzt muss nur noch das main.py Script ausgeführt werden
+
+# Commands to run before running project on MACOS
+```bash
+  brew install ollama
+```
+```bash
+  ollama serve
+```
+```bash
+  ollama pull llama3.8b
+```
+```bash
+  pip install chromadb
+```
+```bash
+  pip install sentence-transformers
+```
+
+- und dannn mit folgenden Befehlen starten:
+```bash
+  python3 -m venv .venv
+```
+```bash
+  source .venv/bin/activate
+```
+```bash
+  python main.py
+```
+
 
 
 Things you can change to experiment:
