@@ -24,53 +24,81 @@ How to Run the project:
 
 
 # Commands for Windows
-```bash
-  python --version
-```
-- falls nicht vorhanden:
+- Pytohn installieren, falls nicht vorhanden:
 ```bash
   winget install Python.Python.3.12
 ```
 
-- danach muss eine virtuelle Umgebung erstellt werden um Kollisionen in Python zu vermeiden, falls bereits python installiert ist
+- virtuelle Umgebung erstellen um python dependencies zu installieren und um Kollisionen für andere Pyhton Projekte zu vermeiden
 ```bash
     py -m venv .venv
 ````
 ```bash
   .\.venv\Scripts\Activate.ps1
-```    
+```
+```bash
+   pip install -r requirements.txt
+```
+- damit wurden u.a. die Datenbank chromadb installiert
+- zuletzt muss nur noch die LLM lokal installiert werden falls noch nicht vorhanden
 
-- jetzt muss nur noch das main.py Script ausgeführt werden
+```bash
+   winget install Ollama.Ollama
+```
+- Ollama Server starten
+```bash
+  ollama serve
+```
+- (in einem seperaten Terminal Fenster) Modell llama3.8b herunterladen
+```bash
+  ollama pull llama3:8b
+```
+- jetzt das main.py Script ausgeführt werden
+```bash
+  python main.py
+```
 
-# Commands to run before running project on MACOS
+# Commands to run before running project on maOS
+- Python installieren falls noch nicht vorhanden
+```bash
+  brew install python@3.12
+```
+
+- LLM installieren und laufen lassen
 ```bash
   brew install ollama
 ```
 ```bash
   ollama serve
 ```
+- hier einen neues Fenster Terminal Fenster nehmen 
 ```bash
-  ollama pull llama3.8b
-```
-```bash
-  pip install chromadb
-```
-```bash
-  pip install sentence-transformers
+  ollama pull llama3:8b
 ```
 
-- und dannn mit folgenden Befehlen starten:
+
+- (zuvor muss Python 3.xx installiert sein) und dann virtuellen Umgebung mit folgenden Befehlen starten:
 ```bash
   python3 -m venv .venv
 ```
 ```bash
   source .venv/bin/activate
 ```
+- jetzt Python Dependencies herunterladen
+
+```bash
+  pip install -r requirements.txt
+```
+
 ```bash
   python main.py
 ```
 
-
+Nützliche Befehle für die chromadb:
+-
+- ls -lah chroma_db  (überprüft ob der Ordner existiert)
+- sqlite3 chroma_db/chroma.sqlite3 "SELECT COUNT(*) FROM embeddings;"  (Ermitteln wie viele Einträge bereits gespeichert wurden)
+- sqlite3 chroma_db/chroma.sqlite3 "SELECT id FROM embeddings LIMIT 10;"
 
 Things you can change to experiment:
 -
